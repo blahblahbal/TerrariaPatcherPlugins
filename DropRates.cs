@@ -22,14 +22,16 @@ namespace BlahPlugins
 			{
 				factor++;
 				if (factor > 20) factor = 20;
-				Main.NewText("Drop Rates multiplied by " + factor, yellow.R, yellow.G, yellow.B, false);
+                IniAPI.WriteIni("DropRates", "Factor", factor.ToString());
+                Main.NewText("Drop Rates multiplied by " + factor, yellow.R, yellow.G, yellow.B, false);
 			}, inc);
 
 			Loader.RegisterHotkey(() =>
 			{
 				factor--;
 				if (factor <= 1) factor = 1;
-				Main.NewText("Drop Rates multiplied by " + factor, yellow.R, yellow.G, yellow.B, false);
+                IniAPI.WriteIni("DropRates", "Factor", factor.ToString());
+                Main.NewText("Drop Rates multiplied by " + factor, yellow.R, yellow.G, yellow.B, false);
 			}, dec);
 		}
         public bool OnNPCLoot(NPC npc)
