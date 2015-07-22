@@ -14,12 +14,8 @@ DropRates.cs - Allows modification of drops.
 
 
 Keys:
-
-P = Increase Drop Rate multiplier.
-
-O = Decrease Drop Rate multiplier.
-
-Right Ctrl = Toggle Rare Drops only
-
+- P = Increase Drop Rate multiplier.
+- O = Decrease Drop Rate multiplier.
+- Right Ctrl = Toggle Rare Drops only
 
 Maximum Drop Rate multiplier is 20; minimum is 1.

@@ -17,10 +17,11 @@ namespace BlahPlugins
 		{
 			if (!Keys.TryParse(IniAPI.ReadIni("DropRates", "IncKey", "P", writeIt: true), out inc)) inc = Keys.P;
             if (!Keys.TryParse(IniAPI.ReadIni("DropRates", "DecKey", "O", writeIt: true), out dec)) dec = Keys.O;
-            if (!Keys.TryParse(IniAPI.ReadIni("DropRates", "Rare", "RightControl", writeIt: true), out toggle)) toggle = Keys.RightControl;
+            if (!Keys.TryParse(IniAPI.ReadIni("DropRates", "RareToggle", "RightControl", writeIt: true), out toggle)) toggle = Keys.RightControl;
+            if (!bool.TryParse(IniAPI.ReadIni("DropRates", "Rare", "False", writeIt: true), out rare)) rare = false;
             factor = byte.Parse(IniAPI.ReadIni("DropRates", "Factor", "1", writeIt: true));
 
-            Color yellow = new Color(250, 250, 50);
+            Color yellow = new Color(255, 235, 150);
 			Loader.RegisterHotkey(() =>
 			{
 				if (factor < 20) factor++;
@@ -39,7 +40,7 @@ namespace BlahPlugins
             {
                 rare = !rare;
                 IniAPI.WriteIni("DropRates", "Rare", rare.ToString());
-                Main.NewText("Rare Drops Only " + rare ? "On" : "Off", yellow.R, yellow.G, yellow.B, false);
+                Main.NewText("Rare Drops Only " + (rare ? "On" : "Off"), yellow.R, yellow.G, yellow.B, false);
             }, toggle);
         }
         public bool OnNPCLoot(NPC npc)
